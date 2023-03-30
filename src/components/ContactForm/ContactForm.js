@@ -9,7 +9,7 @@ import { addContact } from 'components/Redux/operations';
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [isLoading, setIsLoading] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();

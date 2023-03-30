@@ -20,18 +20,16 @@ export const ContactList = () => {
   }, [dispatch]);
 
   return (
-    <>
-      <Wrapper>
-        {visibleContacts.length > 0 ? (
-          visibleContacts.map(contact => (
-            <ContactListItem key={contact.id} {...contact} />
-          ))
-        ) : filterValue && contacts ? (
-          <div>Can`t find any matches.</div>
-        ) : (
-          <div>You don`t have any contacts yet.</div>
-        )}
-      </Wrapper>
-    </>
+    <Wrapper>
+      {visibleContacts.length > 0 ? (
+        visibleContacts.map(contact => (
+          <ContactListItem key={contact.id} {...contact} />
+        ))
+      ) : filterValue && contacts ? (
+        <div>Couldn't find any matches.</div>
+      ) : (
+        <div>You don't have any contacts yet.</div>
+      )}
+    </Wrapper>
   );
 };
