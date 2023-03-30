@@ -1,13 +1,14 @@
 import { useDispatch } from 'react-redux';
 import { TextField } from '@mui/material';
 import { Text, Wrapper } from './Filter.styled';
-import { updateFilter } from '../Redux/contactsSlice';
+import { setFilter } from 'components/Redux/filterSlice';
+
 export const Filter = () => {
   const dispatch = useDispatch();
 
   const onInputChange = e => {
     const filterValue = e.target.value;
-    dispatch(updateFilter(filterValue));
+    dispatch(setFilter(filterValue));
   };
   return (
     <Wrapper>

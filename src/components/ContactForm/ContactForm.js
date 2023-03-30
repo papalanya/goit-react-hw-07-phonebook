@@ -3,14 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import toast, { Toaster } from 'react-hot-toast';
 import { Button, TextField } from '@mui/material';
 import { Form } from 'components/ContactForm/ContactForm.styled';
-import { addContact } from 'components/Redux/contactsSlice';
-import { getContacts } from 'components/Redux/selectors';
+import { selectContacts } from 'components/Redux/selectors';
+import { addContact } from 'components/Redux/operations';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const [isLoading, setIsLoading] = useState('');
 
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const onFormChange = e => {
@@ -39,11 +40,14 @@ export const ContactForm = () => {
 
       return;
     } else {
-      dispatch(addContact(name, number));
+      const newContact = { name, number };
+      dispatch(addContact(newContact));
+      setIsLoading(true);
     }
 
     setName('');
     setNumber('');
+    setIsLoading('');
   };
 
   return (
@@ -75,7 +79,12 @@ export const ContactForm = () => {
         required
         onChange={onFormChange}
       />
-      <Button type="submit" variant="outlined" size="small">
+      <Button
+        type="submit"
+        variant="outlined"
+        size="small"
+        disabled={isLoading}
+      >
         Add contact
       </Button>
       <Toaster />
