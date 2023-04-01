@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { IoMdPerson, IoIosBackspace } from 'react-icons/io';
 import { Button } from '@mui/material';
-import { deleteContact } from 'components/Redux/operations';
+import { deleteContact } from 'Redux/operations';
 import { ListItem } from './ContactListItem.styled';
 
 export const ContactListItem = ({ id, name, phone }) => {

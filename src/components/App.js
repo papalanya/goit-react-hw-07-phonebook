@@ -3,7 +3,7 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import { Wrapper } from './App.styled';
-import { selectIsLoading, selectError } from './Redux/selectors';
+import { selectIsLoading, selectError } from '../Redux/selectors';
 
 export const App = () => {
   const IsLoading = useSelector(selectIsLoading);
